@@ -19,7 +19,7 @@ function loadReporter(reporterPath) {
             reporter = require('./lib/reporters/' + reporterPath);
         } catch (e) {
             try {
-                reporter = require('jscs/reporters/' + reporterPath);
+                reporter = require('jscs/lib/reporters/' + reporterPath);
             }
             catch (e) {
                 return null;
