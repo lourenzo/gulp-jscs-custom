@@ -62,8 +62,8 @@ module.exports = function (options) {
     options = assign({
         esnext: false,
         configPath: '.jscsrc', // @todo: check if this file
-        reporter: 'checkstyle',
-        filePath: 'jscs.xml',
+        reporter: 'console',
+        filePath: null,
         config: null
     }, options || {});
 
