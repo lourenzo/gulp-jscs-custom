@@ -37,6 +37,23 @@ function loadReporter(reporterPath) {
 }
 
 /**
+ * Write Output
+ * @param  {String}   filePath defaults to null (console.log)
+ * @param  {String}   content  Content to be written
+ * @param  {Function} cb       Callback function
+ */
+function writeOutput(filePath, content, cb) {
+    var outStream;
+    if (!filePath) {
+        console.log(content);
+        return cb();
+    }
+
+    outStream = fs.createWriteStream(filePath);
+    outStream.write(content, null, cb);
+}
+
+/**
  * The Gulp Plugin itself
  * @param  {Object} options
  * @return {Stream}
