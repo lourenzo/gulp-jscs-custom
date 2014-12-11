@@ -13,7 +13,7 @@ var gutil = require('gulp-util'),
  */
 function loadReporter(reporterPath) {
     var reporter;
-    reporterPath = reporterPath || 'console';
+    reporterPath = reporterPath || 'checkstyle';
     if (!fs.existsSync(reporterPath)) {
         try {
             reporter = require('./lib/reporters/' + reporterPath);
