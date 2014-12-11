@@ -104,8 +104,7 @@ module.exports = function (options) {
     }, function (cb) {
         //console.log(results);
         if (results.length > 0) {
-            console.log(reporter(results));
-            cb();
+            writeOutput(options.filePath, reporter(results), cb);
         } else {
             cb();
         }
