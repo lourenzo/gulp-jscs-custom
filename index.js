@@ -45,10 +45,11 @@ function loadReporter(reporterPath) {
 function writeOutput(filePath, content, cb) {
     var outStream;
     if (!filePath) {
-        console.log(content);
+        if (content) {
+            console.log(content);
+        }
         return cb();
     }
-
     outStream = fs.createWriteStream(filePath);
     outStream.write(content, null, cb);
 }
