@@ -1,0 +1,33 @@
+{
+  "name": "gulp-jscs-custom",
+  "version": "0.1.0",
+  "description": "Gulp plugin for JSCS with custimizable reporter, and with file outputs, i.e. Jenkins-friendly Checkstyle",
+  "main": "index.js",
+  "dependencies": {
+    "gulp-util": "^3.0.1",
+    "jscs": "^1.8.1",
+    "object-assign": "^2.0.0",
+    "through2": "^0.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lourenzo/gulp-jscs-custom.git"
+  },
+  "keywords": [
+    "Gulp",
+    "JSCS",
+    "Checkstyle",
+    "Jenkins",
+    "Reporter"
+  ],
+  "author": "Lourenzo Ferreira <lourenzo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lourenzo/gulp-jscs-custom/issues"
+  },
+  "homepage": "https://github.com/lourenzo/gulp-jscs-custom"
+}
