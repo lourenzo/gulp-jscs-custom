@@ -94,7 +94,7 @@ module.exports = function (options) {
         }
 
         try {
-            var lintErrors = checker.checkString(file.contents.toString(), file.relative);
+            var lintErrors = checker.checkString(file.contents.toString(), file.path.replace(file.cwd + '/', ''));
             if (lintErrors._errorList.length) {
                 results.push(lintErrors);
             }
