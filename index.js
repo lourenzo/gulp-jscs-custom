@@ -9,6 +9,7 @@ var gutil = require('gulp-util'),
 
 /**
  * load a proper Reporter
+ * @todo Throw error when no reporter was found
  * @return {Function} the selected report
  */
 function loadReporter(reporterPath) {
@@ -22,14 +23,14 @@ function loadReporter(reporterPath) {
                 reporter = require('jscs/lib/reporters/' + reporterPath);
             }
             catch (e) {
-                return null;
+                reporter = null;
             }
         }
     } else {
         try {
             reporter = require(reporterPath);
         } catch (e) {
-            return null;
+            reporter = null;
         }
     }
     return reporter;
