@@ -99,7 +99,7 @@ module.exports = function (options) {
                 results.push(lintErrors);
             }
         } catch (err) {
-            return cb(new gutil.pluginError(err.message.replace('null:', file.relative + ':')));
+            return cb(new gutil.PluginError('gulp-jscs-custom', err.message.replace('null:', file.relative + ':')));
         }
         return cb(null, file);
     }, function (cb) {
