@@ -46,8 +46,12 @@ function writeOutput(filePath, content, cb) {
     var outStream;
     if (!filePath) {
         if (content) {
-            console.log(content);
+            console.log(content)
         }
+        
+        return cb(new gutil.PluginError('gulp-jscs-custom', 'JSCS validation failed', {
+            showStack: false
+        }))
         return cb();
     }
     outStream = fs.createWriteStream(filePath);
@@ -103,7 +107,6 @@ module.exports = function (options) {
         }
         return cb(null, file);
     }, function (cb) {
-        //console.log(results);
         if (results.length > 0) {
             writeOutput(options.filePath, reporter(results), cb);
         } else {
