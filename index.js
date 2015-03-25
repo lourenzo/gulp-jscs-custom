@@ -5,7 +5,8 @@ var gutil = require('gulp-util'),
     fs = require('fs'),
     Checker = require('jscs'),
     loadConfigFile = require('jscs/lib/cli-config'),
-    assign = require('object-assign');
+    assign = require('object-assign'),
+    path = require('path');
 
 /**
  * load a proper Reporter
@@ -15,7 +16,7 @@ var gutil = require('gulp-util'),
 function loadReporter(reporterPath) {
     var reporter;
     reporterPath = reporterPath || 'checkstyle';
-    if (!fs.existsSync(reporterPath)) {
+    if (!fs.existsSync(path.resolve(reporterPath))) {
         try {
             reporter = require('./lib/reporters/' + reporterPath);
         } catch (e) {
@@ -28,7 +29,7 @@ function loadReporter(reporterPath) {
         }
     } else {
         try {
-            reporter = require(reporterPath);
+            reporter = require(path.resolve(reporterPath));
         } catch (e) {
             reporter = null;
         }
