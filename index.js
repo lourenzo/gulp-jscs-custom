@@ -73,7 +73,8 @@ module.exports = function (options) {
         reporter: 'console',
         filePath: null,
         config: null,
-        failOnError: false
+        failOnError: false,
+        alwaysCreateReport: false
     }, options || {});
 
     var configFile = loadConfigFile.load(options.configPath),
@@ -111,7 +112,7 @@ module.exports = function (options) {
         }
         return cb(null, file);
     }, function (cb) {
-        if (results.length > 0) {
+        if (results.length > 0 || options.alwaysCreateReport) {
             writeOutput(options.filePath, reporter(results), options.failOnError, cb);
         } else {
             cb();
