@@ -36,7 +36,8 @@ gulp.task('checkstyle', function () {
             esnext: false,
             configPath: '.jscsrc',
             reporter: 'checkstyle',
-            filePath: './jscs.xml'
+            filePath: './jscs.xml',
+            failOnError: false
         }));
 });
 
@@ -47,11 +48,21 @@ Options
 
 ```javascript
 {
-    esnext: Boolean, // (true | false) Defaults to false
-    configPath: String, // if empty, defaults to '.jscsrc'
-    reporter: String, // Builtins (checkstyle, console, inline, junit, text)
-                      // Or you can add the file path for a custom reporter
-                      // Defaults to console
-    filePath: String // Output file path. Defaults to null (will print to stdout)
+    esnext: Boolean,      // (true | false) Defaults to false
+
+    configPath: String,   // Path to JSCS Config
+                          // Defaults to '.jscsrc'
+
+    reporter: String,     // Builtin reporter: 'checkstyle'
+                          // JSCS reporters:
+                          //    'console', 'inline', 'junit', 'text'
+                          // You can also set the file path to a custom reporter
+                          //    Defaults to: 'console'
+
+    filePath: String,     // Output file path. Null will print to stdout
+                          //    Defaults to null
+
+    failOnError: Boolean  // If set to true, gulp task will break if jscs finds any lint
+                          //    Defaults to 
 }
 ```
