@@ -63,6 +63,6 @@ Options
                           //    Defaults to null
 
     failOnError: Boolean  // If set to true, gulp task will break if jscs finds any lint
-                          //    Defaults to 
+                          //    Defaults to false
 }
 ```

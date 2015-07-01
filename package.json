@@ -1,6 +1,6 @@
 {
   "name": "gulp-jscs-custom",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Gulp plugin for JSCS with custimizable reporter, and with file outputs, i.e. Jenkins-friendly Checkstyle",
   "main": "index.js",
   "dependencies": {
