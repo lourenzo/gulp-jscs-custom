@@ -43,15 +43,19 @@ function loadReporter(reporterPath) {
  * @param  {String}   content  Content to be written
  * @param  {Function} cb       Callback function
  */
-function writeOutput(filePath, content, cb) {
+function writeOutput(filePath, content, failOnError, cb) {
     var outStream;
     if (!filePath) {
         if (content) {
             console.log(content);
         }
-        return cb(new gutil.PluginError('gulp-jscs-custom', 'JSCS validation failed', {
-            showStack: false
-        }));
+        if (failOnError) {
+            return cb(new gutil.PluginError('gulp-jscs-custom', 'JSCS validation failed', {
+                showStack: false
+            }));
+        } else {
+            return cb();
+        }
     }
     outStream = fs.createWriteStream(filePath);
     outStream.write(content, null, cb);
@@ -68,7 +72,8 @@ module.exports = function (options) {
         configPath: '.jscsrc', // @todo: check if this file
         reporter: 'console',
         filePath: null,
-        config: null
+        config: null,
+        failOnError: false
     }, options || {});
 
     var configFile = loadConfigFile.load(options.configPath),
@@ -107,7 +112,7 @@ module.exports = function (options) {
         return cb(null, file);
     }, function (cb) {
         if (results.length > 0) {
-            writeOutput(options.filePath, reporter(results), cb);
+            writeOutput(options.filePath, reporter(results), options.failOnError, cb);
         } else {
             cb();
         }
