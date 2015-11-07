@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "gulp-util": "^3.0.1",
-    "jscs": "^1.8.1",
+    "jscs": "^2.5.1",
     "object-assign": "^2.0.0",
     "through2": "^0.6.3"
   },
